@@ -1,0 +1,18 @@
+video-captioning-app/
+├── backend/
+│   ├── main.py               # FastAPI app
+│   ├── transcriber.py        # Whisper logic
+│   ├── utils.py              # Audio/video processing
+│   ├── requirements.txt
+│   └── uploads/              # Temp storage for uploaded files
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── App.js            # Main UI
+│   │   ├── components/
+│   │   │   ├── VideoPlayer.js
+|   |   |   ├── VideoPlayer.css
+│   │   │   ├── UploadForm.js
+│   │   │   └── CaptionControls.js
+│   └── package.json
+├── README.md
