@@ -4,3 +4,4 @@ python-multipart
 whisper
 ffmpeg-python
 pydantic
+pydub

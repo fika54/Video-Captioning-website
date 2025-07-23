@@ -1,4 +1,5 @@
 import whisper
+import os
 
 """
 Multiple Pretrained models that tradeoff Accuracy for speed.
@@ -60,5 +61,7 @@ def transcribe_audio(audio_path, mode="batch"):
             "words": chunk
         }
         segments.append(segment)
+
+    os.remove(audio_path)
 
     return segments
