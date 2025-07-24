@@ -28,8 +28,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 @app.post("/upload")
 async def upload_video(
-    file: UploadFile,
-    mode: str = Form(...),  # 'batch' or 'word'
+    file: UploadFile
 ):
     file_id = str(uuid.uuid4())
     temp_input = f"temp_{file_id}.mp4"
@@ -43,7 +42,7 @@ async def upload_video(
         f.write(await file.read())
 
     audio_path = extract_audio(filepath)
-    segments = transcribe_audio(audio_path, mode=mode)
+    segments = transcribe_audio(audio_path)
 
     assFilePath = os.path.join(CAPTION_DIR, temp_ass)
 

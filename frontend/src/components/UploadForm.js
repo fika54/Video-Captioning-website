@@ -3,13 +3,11 @@ import axios from "axios";
 
 function UploadForm({ setCaptions, setVideoURL }) {
   const [file, setFile] = useState(null);
-  const [mode, setMode] = useState("batch");
   const [outputBlob, setOutputBlob] = useState(null);
 
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("mode", mode);
 
     const res = await axios.post("http://localhost:8000/upload", formData, {
       responseType: "blob"
@@ -38,17 +36,11 @@ function UploadForm({ setCaptions, setVideoURL }) {
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: "2rem" }}>
       <input type="file" accept="video/*" onChange={e => setFile(e.target.files[0])} />
-      <select value={mode} onChange={e => setMode(e.target.value)}>
-        <option value="batch">Batch</option>
-        <option value="word">Word-by-word</option>
-      </select>
       <button onClick={handleUpload}>Upload & Transcribe</button>
       {outputBlob && (
-        <div style={{ marginTop: "1rem" }}>
-          <button onClick={handleDownload}>Download Burned-In Video</button>
-        </div>
+          <button style={{ marginLeft: "1rem" }} onClick={handleDownload}>Download Burned-In Video</button>
       )}
     </div>
   );

@@ -16,7 +16,7 @@ large-v3	~1550M	    🔵 Most recent	🟢 Best++	🔴 Slowest
 model = whisper.load_model("medium")
 
 #transcribes the audio and segments it
-def transcribe_audio(audio_path, mode="batch"):
+def transcribe_audio(audio_path):
     result = model.transcribe(audio_path, word_timestamps=(True)) #always transcribes word by word
 
     #splits the transcription into individual words and their time stamps
