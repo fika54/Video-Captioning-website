@@ -1,10 +1,13 @@
 video-captioning-app/
 ├── backend/
+│   ├── captions/
+│   ├── outputs/
+│   ├── uploads/              # Temp storage for uploaded files
 │   ├── main.py               # FastAPI app
 │   ├── transcriber.py        # Whisper logic
 │   ├── utils.py              # Audio/video processing
-│   ├── requirements.txt
-│   └── uploads/              # Temp storage for uploaded files
+│   ├── burnincaptions.py
+│   └── requirements.txt      
 ├── frontend/
 │   ├── public/
 │   ├── src/

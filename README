@@ -1,0 +1,74 @@
+AI powered caption tool
+
+Overview:
+
+This project is a full stack web application that generates styled captions from an audio input and returns an mp4 video with these captions included.
+
+The captions are generated using Whisper (https://github.com/openai/whisper).
+
+How to run it:
+
+Terminal 1
+cd backend
+pip install -r requirements.txt     #Advised to do this in a venv
+uvicorn main:app --reload
+
+Terminal 2
+cd frontend
+npm install
+npm start
+
+
+Features:
+
+- Transcribes audio using OpenAi's whisper model
+- segments the captions into groups of 5 to keep readability
+- Word by word highlighting synced up to speech in the video
+- Auto adjusted caption size based on the aspect ratio of the video
+- Fade in and slide out
+
+Potential Features:
+
+- Separate webm download of captions to be edited into a video in a 3rd party software.
+- Customised styling of the captions or style presets (Currently hardcoded to only support 1 style of caption)
+- if multiple people are present speaking, identifying and showing each individual person
+- manual editing of the captions in case the AI misinterprets it
+- Better more developed UI
+- a way to run both the frontend and backend with one command
+
+
+How It Works:
+
+1. Upload & Transcription
+- User uploads a video/audio file via the frontend.
+- The backend uses whisper to transcribe and time-stamp each word.
+
+2. Styling Captions
+- The backend converts segments into a ".ass" subtitle file.
+- Each word is placed on either the top or bottom line (max 3 top).
+- Animations like zoom and color highlight are applied per word.
+
+3. Caption Burn-In
+- FFmpeg burns the styled subtitles into the video.
+
+
+Tech Stack:
+
+- Frontend - React
+- Backend - Python(with FastAPI)
+- Transcription - OpenAI Whisper
+- Captions - .ass (Advanced SubStation Alpha) Scripting
+- Video manipulation - FFmpeg
+
+
+What I learnt:
+
+- How to levarage AI to create something complex quickly (this project took about 4 days to make while having little experience with the technologies used)
+
+- How to debug code generated with AI
+
+- Prompt engineering properly so AI fills gaps in my knowledge and expidites some of the coding process to make something more complex than AI could build on its own
+
+- How Advanced SubStation Alpha scripting works and understanding how to use it to style captions
+
+- How to structure backend and frontend logic and link them within a full stack application
