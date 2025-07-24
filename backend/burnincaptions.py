@@ -113,12 +113,18 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         move_start = int((segment_end_calc - segment["start"]) * 1000 - 150)
         move_end = int((segment_end_calc - segment["start"]) * 1000)
 
+
+        if vidwidth < vidheight:
+            alignment_tag = r"\an2"
+            start_y = int(vidheight * 0.75)  # 75% down the screen
+        else:
+            alignment_tag = r"\an5"
+            start_y = vidheight // 2
+
         start_x = vidwidth // 2
-        start_y = vidheight // 2
         end_x = -vidwidth // 3  # offscreen left by ~1/3 of width
         end_y = start_y
 
-        alignment_tag = r"\an5"
         slide_out_effect = rf"\move({start_x},{start_y},{end_x},{end_y},{move_start},{move_end})"
 
         full_line = r"{" + alignment_tag + fade_in_effect + slide_out_effect + r"}" + caption_line

@@ -13,7 +13,7 @@ large	    ~1550M	    🔴 Largest	    🟢 Best	    🔴 Slowest
 large-v2	~1550M	    🔴 Largest	    🟢 Best	    🔴 Slowest
 large-v3	~1550M	    🔵 Most recent	🟢 Best++	🔴 Slowest
 """
-model = whisper.load_model("small")
+model = whisper.load_model("medium")
 
 #transcribes the audio and segments it
 def transcribe_audio(audio_path, mode="batch"):
